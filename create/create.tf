@@ -16,8 +16,9 @@ data "template_file" "rules" {
     destination = tostring(local.inline-policy.rules[count.index].destination)
     service = tostring(local.inline-policy.rules[count.index].service)
     vpn = tostring(local.inline-policy.rules[count.index].vpn)
+    action = tostring(local.inline-policy.rules[count.index].action)
     track = tostring(local.inline-policy.rules[count.index].track)
-    layer = "checkpoint_management_access_layer.custom"
+    layer = "checkpoint_management_access_layer.inline"
   }
 }
 
@@ -27,5 +28,5 @@ locals {
 
 resource "local_file" "rules_file" {
   content  = join("\n", local.rendered)
-  filename = "${path.module}/../rules.tf"
+  filename = "${path.module}/../inline-rules.tf"
 }

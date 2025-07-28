@@ -31,17 +31,26 @@ resource "checkpoint_management_network" "net1" {
   mask_length4 = "24"   
 }
 
+# Create network object
+resource "checkpoint_management_network" "net2" {
+  name = "Network2"
+  subnet4 = "192.0.2.0"
+  mask_length4 = "24"   
+}
+
 resource "checkpoint_management_access_layer" "inline" {
   name = "Inline"
+  add_default_rule = false
 }
 
 
 resource "checkpoint_management_access_rule" "inline-rule" {
   name = "Inline"
   layer = "Network"
-  position = {top = "top"}
+  position = {bottom = "bottom"}
   source = [
-    checkpoint_management_network.net1.name
+    checkpoint_management_network.net1.name,
+    checkpoint_management_network.net2.name
   ]
   destination = ["Any"]
   service = ["Any"]
@@ -64,34 +73,7 @@ resource "checkpoint_management_access_rule" "inline-rule" {
 }
 
 
-resource "checkpoint_management_access_rule" "web" {
-  name = "Accept web"
-  layer = checkpoint_management_access_layer.inline.id
-  position = {top = "top"}
-  source = ["Any"]
-  destination = ["Any"]
-  service = [
-    "http",
-    "https"
-  ]
-  content = ["Any"]
-  time = ["Any"]
-  action = "Accept"
-  install_on = ["Policy Targets"]
-  track = {
-    type = "Log"
-    accounting = false
-    alert = "none"
-    enable_firewall_session = false
-    per_connection = true
-    per_session = false
-  }
-  action_settings = {
-    enable_identity_captive_portal = false
-  }
-  custom_fields = {}
-  vpn = "Any"
-}
+
 
 
 resource "checkpoint_management_publish" "example" {

@@ -7,7 +7,7 @@ resource "checkpoint_management_access_rule" "rule_${name_}" {
   service = ${service}
   content = ["Any"]
   time = ["Any"]
-  action = "Accept"
+  action = "${action}"
   install_on = ["Policy Targets"]
   track = {
     type = "${track}"
