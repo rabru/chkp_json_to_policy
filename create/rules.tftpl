@@ -1,0 +1,25 @@
+resource "checkpoint_management_access_rule" "rule_${name_}" {
+  name = "${name}"
+  layer = ${layer}.id
+  position = %{ if pre == "" }{top = "top"}%{ else }{below = checkpoint_management_access_rule.rule_${pre}.name}%{ endif }
+  source = ${source}
+  destination = ${destination}
+  service = ${service}
+  content = ["Any"]
+  time = ["Any"]
+  action = "Accept"
+  install_on = ["Policy Targets"]
+  track = {
+    type = "${track}"
+    accounting = false
+    alert = "none"
+    enable_firewall_session = false
+    per_connection = true
+    per_session = false
+  }
+  action_settings = {
+    enable_identity_captive_portal = false
+  }
+  custom_fields = {}
+  vpn = "${vpn}"
+}

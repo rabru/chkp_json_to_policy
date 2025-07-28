@@ -1,0 +1,58 @@
+{
+    "rules": [
+        {
+            "name": "Allow1",
+            "source": "[\"Network1\"]",
+            "destination": "[\"Any\"]",
+            "vpn": "Any",
+            "service": "[\"Any\"]",
+            "action": "Accept",
+            "track": "None"
+        },
+        {
+            "name": "Allow2",
+            "source": "[\"Network2\"]",
+            "destination": "[\"Any\"]",
+            "vpn": "Any",
+            "service": "[\"Any\"]",
+            "action": "Accept",
+            "track": "Log"
+        },
+        {
+            "name": "Allow ICMP",
+            "source": "[\"Network1\", \"Network2\"]",
+            "destination": "[\"Network1\", \"Network2\"]",
+            "vpn": "Any",
+            "service": "[\"echo-request\", \"echo-reply\"]",
+            "action": "Accept",
+            "track": "None"
+        },
+        {
+            "name": "Allow http/s",
+            "source": "[\"Network1\"]",
+            "destination": "[\"Any\"]",
+            "vpn": "Any",
+            "service": "[\"http\", \"https\"]",
+            "action": "Accept",
+            "track": "None"
+        },
+        {
+            "name": "Allow ssh",
+            "source": "[\"Any\"]",
+            "destination": "[\"Any\"]",
+            "vpn": "Any",
+            "service": "[\"ssh\"]",
+            "action": "Accept",
+            "track": "None"
+        },
+        {
+            "name": "Cleanup rule",
+            "source": "[\"Any\"]",
+            "destination": "[\"Any\"]",
+            "vpn": "Any",
+            "service": "[\"Any\"]",
+            "action": "Drop",
+            "track": "Log"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+
+#### Smart1 Cloud
+# Portal:
+portal = "name-abcd1234.maas.checkpoint.com"
+# Cloud Mgmt ID:
+cloud_mgmt_id = "01234567-89ab-cdef-0123-456789abcdef"
+# API key:
+api_key = "your-key"
+
+#### Smart1
+# Server:
+server = "10.10.10.10"
+# User:
+user = "admin"
+# Password:
+password = "your-password"
