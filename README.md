@@ -4,7 +4,7 @@ This is an example how you can deploy an inline policy and install a rule set ba
 
 ## Preparations 
 
-- Clone the repository & change working directory to terraform
+- Clone the repository and change working directory
 ```
 git clone https://github.com/rabru/chkp_json_to_policy
 cd chkp_json_to_policy
@@ -16,7 +16,7 @@ cd chkp_json_to_policy
 mv terraform.tfvars.example terraform.tfvars
 ```
 
-- Remove the checkpoint provider setup of the unused management system out of `main.tf`.´Smart1´ is enabled by default.
+- Remove the checkpoint provider setup of the unused management system out of `main.tf`. ´Smart1´ is enabled by default.
 
 ```
 /*
@@ -66,7 +66,7 @@ Validate the script before you continue.
 
 ### The deployment
 
-If you start the script a given, this will include the inline policy on the button, after your cleanup rule. Therefore, it shouldn't do any harm to the existing setup.
+If you start the script as given, this will include the inline policy on the botton, after your cleanup rule. Therefore, it shouldn't do any harm to the existing setup.
 
 ```
 cd ..
