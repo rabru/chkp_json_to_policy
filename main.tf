@@ -13,7 +13,7 @@ provider "checkpoint" {
   server = "${var.portal}"
   api_key = "${var.api_key}"
   cloud_mgmt_id = "${var.cloud_mgmt_id}"
-#  auto_publish_batch_size = 1
+  auto_publish_batch_size = 1
 }
 */
 
