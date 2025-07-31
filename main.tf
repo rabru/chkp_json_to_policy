@@ -42,6 +42,10 @@ resource "checkpoint_management_network" "net2" {
 resource "checkpoint_management_access_layer" "inline" {
   name = "Inline"
   add_default_rule = false
+  depends_on = [
+    checkpoint_management_network.net1,
+    checkpoint_management_network.net2
+  ]
 }
 
 
