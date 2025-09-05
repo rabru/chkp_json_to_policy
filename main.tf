@@ -80,13 +80,19 @@ resource "checkpoint_management_access_rule" "inline-rule" {
 }
 
 
-resource "checkpoint_management_publish" "example" {
+resource "checkpoint_management_publish" "inline-policy" {
   run_publish_on_destroy = true
+  depends_on = [
+    checkpoint_management_access_rule.inline-rule
+  ]
 }
 
 
 /*
-resource "checkpoint_management_install_policy" "example" {
+resource "checkpoint_management_install_policy" "inline-policy" {
   policy_package = "standard"
+  depends_on = [
+    checkpoint_management_publish.inline-policy
+  ]
 }
 */
