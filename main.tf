@@ -13,6 +13,7 @@ provider "checkpoint" {
   server = "${var.portal}"
   api_key = "${var.api_key}"
   cloud_mgmt_id = "${var.cloud_mgmt_id}"
+  session_name = "Terraform session"
   auto_publish_batch_size = 1
 }
 */
@@ -22,6 +23,7 @@ provider "checkpoint" {
   server = "${var.server}"
   username = "${var.user}"
   password = "${var.password}"
+  session_name = "Terraform session"
   auto_publish_batch_size = 1
 }
 
@@ -79,8 +81,13 @@ resource "checkpoint_management_access_rule" "inline-rule" {
 
 
 
-
-
 resource "checkpoint_management_publish" "example" {
   run_publish_on_destroy = true
 }
+
+
+/*
+resource "checkpoint_management_install_policy" "example" {
+  policy_package = "standard"
+}
+*/
