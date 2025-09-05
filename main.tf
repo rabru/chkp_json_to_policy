@@ -80,7 +80,6 @@ resource "checkpoint_management_access_rule" "inline-rule" {
 }
 
 
-
 resource "checkpoint_management_publish" "example" {
   run_publish_on_destroy = true
 }

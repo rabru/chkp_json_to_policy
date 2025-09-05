@@ -74,9 +74,8 @@ terraform init
 terraform apply
 ```
 
-### Remove the deployment
+## Remove the deployment
 
-To clean up the deployment use the following command.
 
 ```
 terraform destroy
