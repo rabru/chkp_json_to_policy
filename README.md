@@ -10,13 +10,13 @@ git clone https://github.com/rabru/chkp_json_to_policy
 cd chkp_json_to_policy
 ```
 
-- Depending on the management system used add the needed credentials in the ´Smart1´ or ´Smart1 Cloud´ part in `terraform.tfvars.example`.
+- Depending on the used management system add the needed credentials in the ´Smart1´ or ´Smart1 Cloud´ part in `terraform.tfvars.example`.
 - Rename `terraform.tfvars.example` to `terraform.tfvars`
 ```
 mv terraform.tfvars.example terraform.tfvars
 ```
 
-- Remove the checkpoint provider setup of the unused management system out of `main.tf`. ´Smart1´ is enabled by default.
+- Remove the checkpoint provider setup of the unused management system in `main.tf`. ´Smart1´ is enabled by default.
 
 ```
 /*
@@ -60,7 +60,7 @@ terraform init
 terraform apply
 ```
 
-This will create `../inline-rules.tf`
+This will create `../inline-rules.tf` and the `../destroy.bat` script.
 
 Validate the script before you continue.
 
@@ -76,9 +76,13 @@ terraform apply
 
 ## Remove the deployment
 
+In the moment the Inline Policy gets removed from the Standard Policy, it will be automatically deleted by the system together with all included rules. Terraform is not aware of this and will try to delete them if you start`terraform destroy`and
+through an error. If you start `terraform destroy` again, it will recognize it and clean up the state.
+ 
+To avoid the error, you can manually remove the state from the Terraform state list. Or you use the `destrop.bat` script to do it for you.
 
 ```
-terraform destroy
+./destroy.bat
 ```
 
 
