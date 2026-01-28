@@ -24,9 +24,16 @@ data "template_file" "rules" {
 
 locals {
   rendered = [for a in data.template_file.rules : a.rendered ]
+  remove_list = [for a in data.template_file.rules : "checkpoint_management_access_rule.rule_${a.vars.name_}" ]
 }
 
 resource "local_file" "rules_file" {
   content  = join("\n", local.rendered)
   filename = "${path.module}/../inline-rules.tf"
 }
+
+resource "local_file" "destroy_file" {
+  content  = "terraform state rm checkpoint_management_access_layer.inline ${join(" ", local.remove_list)}\nterraform destroy"
+  filename = "${path.module}/../destroy.bat"
+}
+

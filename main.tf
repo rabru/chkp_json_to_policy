@@ -14,7 +14,7 @@ provider "checkpoint" {
   api_key = "${var.api_key}"
   cloud_mgmt_id = "${var.cloud_mgmt_id}"
   session_name = "Terraform session"
-  auto_publish_batch_size = 1
+  #auto_publish_batch_size = 1
 }
 */
 
@@ -44,10 +44,6 @@ resource "checkpoint_management_network" "net2" {
 resource "checkpoint_management_access_layer" "inline" {
   name = "Inline"
   add_default_rule = false
-  depends_on = [
-    checkpoint_management_network.net1,
-    checkpoint_management_network.net2
-  ]
 }
 
 
@@ -77,6 +73,9 @@ resource "checkpoint_management_access_rule" "inline-rule" {
   action_settings = {}
   custom_fields = {}
   vpn = "Any"
+  depends_on = [
+    checkpoint_management_access_rule.rule_Cleanup
+  ]
 }
 
 

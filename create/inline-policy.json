@@ -46,7 +46,7 @@
             "track": "None"
         },
         {
-            "name": "Cleanup rule",
+            "name": "Cleanup",
             "source": "[\"Any\"]",
             "destination": "[\"Any\"]",
             "vpn": "Any",

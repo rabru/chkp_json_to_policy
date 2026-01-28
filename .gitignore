@@ -39,5 +39,6 @@ terraform.rc
 
 # Additional
 inline-rules.tf
+destroy.bat
 fingerprints.json
 sid.json
